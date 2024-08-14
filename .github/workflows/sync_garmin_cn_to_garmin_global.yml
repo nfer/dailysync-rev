@@ -3,8 +3,9 @@ name: Sync Garmin CN to Garmin Global
 on:
   workflow_dispatch:
   schedule:
-    #  每6小时检查一次
-    - cron: "0 */6 * * *"
+    # 在每天的北京时间早晨8点、9点、10点，中午1点、2点，下午7点、8点的整点时刻执行
+    # 注意，GitHub Action的计划时间是基于协调世界时（UTC）的
+    - cron: "0 0,1,2,5,6,11,12 * * *"
   push:
     branches:
       - main
